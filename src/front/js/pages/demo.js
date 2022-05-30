@@ -5,6 +5,9 @@ import { Context } from "../store/appContext";
 
 export const Demo = () => {
   const { store, actions } = useContext(Context);
+  const [mail, addMail] = useState("");
+  const [password, addPassword] = useState("");
+  const [confirm_password, addConfirmPassword] = useState("");
 
   return (
     <div>
@@ -12,20 +15,35 @@ export const Demo = () => {
         <h2 className="mb-4">Nuevo Usuario</h2>
         <form>
           <div class="form-outline mb-4">
-            <input type="email" id="form2Example1" class="form-control" />
+            <input
+              type="email"
+              id="form2Example1"
+              class="form-control"
+              onChange={(e) => addMail(e.target.value)}
+            />
             <label class="form-label pt-2" for="form2Example1">
               Email
             </label>
           </div>
 
           <div class="form-outline mb-4">
-            <input type="password" id="form2Example2" class="form-control" />
+            <input
+              type="password"
+              id="form2Example2"
+              class="form-control"
+              onChange={(e) => addPassword(e.target.value)}
+            />
             <label class="form-label pt-2" for="form2Example2">
               Password
             </label>
           </div>
           <div class="form-outline mb-4">
-            <input type="password" id="form2Example2" class="form-control" />
+            <input
+              type="password"
+              id="form2Example2"
+              class="form-control"
+              onChange={(e) => addConfirmPassword(e.target.value)}
+            />
             <label class="form-label pt-2" for="form2Example2">
               Confirm Password
             </label>
@@ -37,7 +55,13 @@ export const Demo = () => {
             </div>
           </div>
 
-          <button type="button" class="btn btn-success btn-block mb-4">
+          <button
+            type="button"
+            class="btn btn-success btn-block mb-4"
+            onClick={() => {
+              actions.add(mail, password, confirm_password);
+            }}
+          >
             Registrar
           </button>
 

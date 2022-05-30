@@ -71,6 +71,7 @@ def iniciar_sesion():
                 "duracion": tiempo.total_seconds(),
                 "token": acceso
             })
+        else:
             return "clave incorrecta"
     else:
         return "user no existe",400
